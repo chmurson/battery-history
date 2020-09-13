@@ -2,7 +2,7 @@
 
 Tracks Macbook's battery stats throughout time.
 
-After installation, it registers a deamon, that is launched once per day to save current battery stats. The more time passes from the installation there more data will be presented by the tool. 
+After installation, it registers a Launchd agent, that runs once per day to save current battery stats. The more time passes from the tool installation the more data will be available. 
 
 #### Demo
 ![Demo Gif](https://chmurson.github.io/battery-history/demo.gif)
@@ -37,9 +37,18 @@ Days since first measurement: 59
 
 #### Source of data
 
- `system_profiler` that is shipped with Macos is used to power `batter-history`. Following command is used `system_profiler SPPowerDataType -json`
+`system_profiler` that is shipped with Macos is used to power `batter-history`. To be specific, it runs the following command: `system_profiler SPPowerDataType -json`
 
-#### Deamon
+#### Launchd agent
 
-Installation process registers a Launchd deamon, and schedules it to run once per day. This and the fact that ligthweight Macos's tool is used as source of data makes impact of the tool on battery unnoticeable.
+Installation process registers a Launchd agent, and schedules it to run `battery-history` once per day to record current battery status.
 
+The agent should execute `battery-history` once per day. If macbook is turned off, and the day passes, then Launchd triggers agent upon next OS launch. 
+
+> Launchd is equivalent of crontab for MacOS. 
+
+Agent can be controlled via `bh agent {load|unload}` commands. It is turned on by default, but can be turned off and back on. Turned off agent stops data from being collected, unless `battery-history` is executed manually.     
+
+#### Battery impact
+
+Agent executes `battery-history` at maximum once per day, the tool uses builtin CLI MacOS command that is very lightweight. All this makes impacts on battery usage unnoticeable.
