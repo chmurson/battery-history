@@ -1,0 +1,6 @@
+.idea
+log.csv
+log.err
+yarn-error.log
+.DS_Store
+node_modules
