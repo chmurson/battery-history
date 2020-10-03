@@ -2,13 +2,20 @@ const { existsSync } = require('fs')
 const { execSync } = require('child_process')
 const agentLabel = 'chmurson.battery-history'
 
-function isAgentLoaded() {
+function getAgentStatus() {
   try {
-    execSync(`launchctl list | grep ${agentLabel}`)
-    return true
+    const result = execSync(`launchctl list | grep ${agentLabel}`).toString()
+    const statusCode = parseInt(result.split('\t')[1])
+    return {
+      loaded: true,
+      statusCode,
+    }
   } catch (e) {
     if (e && e.status === 1) {
-      return false
+      return {
+        loaded: false,
+        statusCode: undefined,
+      }
     }
     throw e
   }
@@ -29,7 +36,7 @@ function hasAgentDefinitionFileBeenInstalled() {
 }
 
 module.exports = {
-  isAgentLoaded,
+  getAgentStatus,
   unloadAgent,
   loadAgent,
   hasAgentDefinitionFileBeenInstalled,

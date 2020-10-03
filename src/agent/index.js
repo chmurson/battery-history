@@ -1,17 +1,27 @@
 const commandLineArgs = require('command-line-args')
-const { loadAgent, unloadAgent, isAgentLoaded, hasAgentDefinitionFileBeenInstalled } = require('./agent-utils')
+const { loadAgent, unloadAgent, getAgentStatus, hasAgentDefinitionFileBeenInstalled } = require('./agent-utils')
 const { printUsage, optionDefinitions } = require('./command-info')
 
 function runCommand(argv) {
   const { command } = commandLineArgs(optionDefinitions, { argv, stopAtFirstUnknown: true })
 
+  const { loaded, statusCode } = getAgentStatus()
+
   if (command === 'status') {
-    console.log(isAgentLoaded() ? 'Agent is loaded' : 'Agent is not loaded')
+    if (loaded) {
+      console.log(
+        statusCode === 0
+          ? 'Agent is loaded'
+          : `Agent is loaded, but is not working. Last status code is ${statusCode}. Try to reinstall batter-history, or/and update it.`,
+      )
+    } else {
+      console.log('Agent is not loaded')
+    }
     return
   }
 
   if (command === 'load') {
-    if (isAgentLoaded()) {
+    if (loaded) {
       console.log('Agent is already loaded')
       process.exit(1)
     }
@@ -30,7 +40,7 @@ function runCommand(argv) {
   }
 
   if (command === 'unload') {
-    if (!isAgentLoaded()) {
+    if (!loaded) {
       console.log('Agent has not been loaded')
       process.exit(1)
     }
