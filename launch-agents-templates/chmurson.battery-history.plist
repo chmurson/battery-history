@@ -6,9 +6,10 @@
         <string>chmurson.battery-history</string>
         <key>ProgramArguments</key>
         <array>
-            <string>/usr/local/bin/node</string>
+            <string>{PATH_TO_NODE}</string>
             <string>{PATH_TO_PROJECT}/index.js</string>
             <string>show</string>
+            <string>--agent</string>
         </array>
         <key>RunAtLoad</key>
         <true/>

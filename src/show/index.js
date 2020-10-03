@@ -1,6 +1,7 @@
 const commandLineArgs = require('command-line-args')
 const { getBatteryStats } = require('../functions/get-current-stats')
 const { getHistoryStats } = require('../functions/get-history-stats')
+const { writeUpdatingHistoryEvent } = require('../functions/event-log')
 const { updateHistoryStats } = require('../functions/update-history-stats')
 const { getStatsDataCSVString, getStatsHeaderCSVString } = require('../functions/get-stats-csv-string')
 const { getRichPrintOutput } = require('./get-rich-print-ouput')
@@ -11,6 +12,7 @@ function runCommand(argv) {
   const stats = getBatteryStats()
   const historyStats = getHistoryStats()
   updateHistoryStats(historyStats, stats)
+  writeUpdatingHistoryEvent({ isAgent: options.agent })
 
   if (options.help) {
     printUsage()

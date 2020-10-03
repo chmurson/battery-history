@@ -15,6 +15,7 @@ function isAgentLoaded() {
 }
 
 const pathToAgentDefinitionFile = `${process.env.HOME}/Library/LaunchAgents/chmurson.battery-history.plist`
+
 function unloadAgent() {
   execSync(`launchctl unload ${pathToAgentDefinitionFile}`)
 }

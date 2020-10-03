@@ -8,7 +8,7 @@ then
 fi
 
 # copy template file into agents folder, and put real values there
-sed "s|{PATH_TO_PROJECT}|$(pwd)|g" launch-agents-templates/chmurson.battery-history.plist | sed "s|{PATH_TO_HOME}|$HOME|g" > ~/Library/LaunchAgents/chmurson.battery-history.plist
+sed "s|{PATH_TO_PROJECT}|$(pwd)|g" launch-agents-templates/chmurson.battery-history.plist | sed "s|{PATH_TO_HOME}|$HOME|g" | sed "s|{PATH_TO_NODE}|$(which node)|g" > ~/Library/LaunchAgents/chmurson.battery-history.plist
 
 # once plist file of agent is ready, load it
 launchctl load ~/Library/LaunchAgents/chmurson.battery-history.plist

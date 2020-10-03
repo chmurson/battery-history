@@ -1,8 +1,8 @@
 const path = require('path')
 const { readFileSync, appendFileSync } = require('fs')
 const readLastLine = require('read-last-line')
+const { appLocalSettingsFolderPath } = require('./consts')
 
-const appLocalSettingsFolderPath = path.resolve(process.env.HOME, '.battery-history')
 const historyFilePath = path.resolve(appLocalSettingsFolderPath, 'log.csv')
 
 function getHistory() {

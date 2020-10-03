@@ -4,6 +4,7 @@ const optionDefinitions = [
   { name: 'header-only', type: Boolean },
   { name: 'json', type: Boolean },
   { name: 'help', type: Boolean },
+  { name: 'agent', type: Boolean },
 ]
 
 function printUsage() {
