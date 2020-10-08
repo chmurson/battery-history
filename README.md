@@ -7,6 +7,10 @@ After installation, it registers a Launchd agent, that runs once per day to save
 #### Demo
 ![Demo Gif](https://chmurson.github.io/battery-history/demo.gif)
 
+#### Changelog
+
+[It's here](CHANGELOG.md)
+
 #### How to install
 
 ```bash
