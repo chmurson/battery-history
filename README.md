@@ -1,8 +1,16 @@
-## Battery history
+## Battery History
 
 Tracks Macbook's battery stats throughout time.
 
-After installation, it registers a Launchd agent, that runs once per day to save current battery stats. The more time passes from the tool installation the more data will be available. 
+After installation, it registers a Launchd agent, that runs once per day to save current battery stats. The more time passes from the tool installation the more data will be available to you to see.
+
+### Why?
+
+Batteries have a limited amount of charge cycles before their performance is expected to diminish. It is recommended to replace it at some point, when it gets close to max number of cycles. 
+
+Macbooks provide measurement of current cycles. `battery-history` takes that information and shows how it changes overt time. This provides more control over the Macbook, and possibly leads into extending life of the battery.  
+
+[More info at Apple Support](https://support.apple.com/en-us/HT201585)  
 
 #### Demo
 ![Demo Gif](https://chmurson.github.io/battery-history/demo.gif)
