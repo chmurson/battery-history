@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [0.2.2]
 
 ### Added
 - Information about motivations to create `battery-history` to `README.md` + link to Apple Support article explaining role of cycles counts of the battery in measurement of battery life. 
