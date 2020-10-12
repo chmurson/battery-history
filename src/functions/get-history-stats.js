@@ -42,13 +42,11 @@ function getHistoryStats() {
   return {
     lastDayOfMeasurement,
     daysSinceFirstMeasurement,
-    cycleCount: {
-      last7Days: getColumnDiffBetweenXDaysAndLast(history, 7, COLUMN_CYCLE_COUNT),
-      last30Days: getColumnDiffBetweenXDaysAndLast(history, 30, COLUMN_CYCLE_COUNT),
+    cycleCountDiff: {
+      getLastXDays: (daysNumber) => getColumnDiffBetweenXDaysAndLast(history, daysNumber, COLUMN_CYCLE_COUNT),
     },
-    maxCapacity: {
-      last7Days: getColumnDiffBetweenXDaysAndLast(history, 7, COLUMN_MAX_CAPACITY),
-      last30Days: getColumnDiffBetweenXDaysAndLast(history, 30, COLUMN_MAX_CAPACITY),
+    maxCapacityDiff: {
+      getLastXDays: (daysNumber) => getColumnDiffBetweenXDaysAndLast(history, daysNumber, COLUMN_MAX_CAPACITY),
     },
   }
 }

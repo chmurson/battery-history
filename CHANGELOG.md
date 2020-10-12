@@ -1,5 +1,12 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+- Shows stats of more time ranges:
+  - Previously it displayed stats from last 7 and 30 days
+  - Now it shows also (if data available) from last: 60, 90, 180 days and last year, 2 years... up to 7.  
+
 ## [0.2.2]
 
 ### Added
